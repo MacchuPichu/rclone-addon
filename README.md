@@ -1,15 +1,14 @@
 # rclone-addon
-Rclone addon for Kodi Matrix v19
+Rclone addon for Kodi 
 
 To be used with Android boxes and phones.
 
-1. Install from zip
-2. edit main.py with your remote name under kodi installation dir/addons/script.service.rclone
-3. place rclone.conf in profile directory
+1. Place rclone.conf in profile directory
+2. Install from zip
+3. Configure the rclone command to run in the plugin configuration
 
-To access your files
+Default: serve webdav your_rclone_remote:/ --addr :23457 --dir-cache-time 2400h --vfs-cache-max-age 2400h  --poll-interval 10m
 
-1. Add a webdav source
-2. address localhost
-3. port 23457
+Change your_rclone_remote to the rclone remote in your config.
 
+Then you can add a Webdav Source to localhost:23457 in kodi to access your files.
