@@ -12,3 +12,5 @@ Default: serve webdav your_rclone_remote:/ --addr :23457 --dir-cache-time 2400h 
 Change your_rclone_remote to the rclone remote in your config.
 
 Then you can add a Webdav Source to localhost:23457 in kodi to access your files.
+
+Aide dans le fil : https://forum.kodi.tv/showthread.php?tid=354249
