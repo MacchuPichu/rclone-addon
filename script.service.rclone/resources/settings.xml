@@ -2,6 +2,6 @@
 <settings>
     <category label="32001">
 	    <setting label="32012" type="text" id="rclonedownload" default="https://beta.rclone.org/v1.62.2/testbuilds/rclone-android-21-armv7a.gz"/>
-	    <setting label="32011" type="text" id="parameters" default="serve webdav pCloud_Encrypted:/ --addr :23457 --dir-cache-time 2400h --vfs-cache-max-age 2400h  --poll-interval 10m"/>
+	    <setting label="32011" type="text" id="parameters" default="serve webdav pCloud_Encrypted:Médiathèque/ --addr :23457 --dir-cache-time 2400h --vfs-cache-max-age 2400h  --poll-interval 10m"/>
     </category>
 </settings>
