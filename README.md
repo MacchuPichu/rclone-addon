@@ -7,7 +7,10 @@ To be used with Android boxes and phones.
 3. Install from zip
 4. Configure the rclone command to run in the plugin configuration
 
-Default: serve webdav your_rclone_remote:/ --addr :23457 --dir-cache-time 2400h --vfs-cache-max-age 2400h  --poll-interval 10m
+Defaut rclone version : https://beta.rclone.org/v1.62.2/testbuilds/rclone-android-21-armv7a.gz
+Mi Box S : arm v7a
+
+Default: serve webdav pCloud_Encrypted:Médiathèque/ --addr :23457 --dir-cache-time 2400h --vfs-cache-max-age 2400h  --poll-interval 10m
 
 Change your_rclone_remote to the rclone remote in your config.
 
