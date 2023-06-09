@@ -35,7 +35,7 @@ else:
 if os.name == 'nt':
 	loc = locwin
 	
-# Si on est sur un Windows
+# Si on est sur un linux
 if os.name == 'posix':
 	loc = locposix
 
