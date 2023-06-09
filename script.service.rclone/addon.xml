@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.service.rclone" name="Rclone for Android" version="1.0.0" provider-name="Fandangos">
-	<requires>
-		<import addon="script.module.future" version="0.17.1"/>
-	</requires>
-	<extension point="xbmc.service" library="main.py">
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en_GB">Run rclone when Kodi starts</summary>
-		<description lang="en_GB">This script will download the android binary and run one rclone command on startup.  You can change the command in plugin settings.</description>
-		<license>GNU GENERAL PUBLIC LICENSE Version 2</license>
-	</extension>
+<addon id="script.service.rclone"
+       version="1.1.0" 
+       name="Rclone for Android"
+       provider-name="MacchuPichu">
+  <requires>
+    <import addon="script.module.future" version="0.17.1"/>
+  </requires>
+  <extension point="xbmc.service" 
+	     library="main.py">
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Run rclone when Kodi starts</summary>
+    <description lang="en">This script will download the android binary and run one rclone command on startup.  You can change the command in plugin settings.</description>
+    <disclaimer lang="en">jmez11's fork of fandangos's fork.</disclaimer>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <website>https://github.com/MacchuPichu/rclone-addon</website>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+      <screenshot>resources\screenshot-01.jpg</screenshot>
+      <screenshot>resources\screenshot-02.jpg</screenshot>
+      <screenshot>resources\screenshot-03.jpg</screenshot>    
+    </assets>
+    <news></news>
+  </extension>
 </addon>
