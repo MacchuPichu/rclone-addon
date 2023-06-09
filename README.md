@@ -16,6 +16,9 @@ Default: serve webdav pCloud_Encrypted:Médiathèque/ --addr :23457 --dir-cache-
 
 Change your_rclone_remote to the rclone remote in your config.
 
-Then you can add a Webdav Source to localhost:23457 in kodi to access your files.
+Then you can add a Webdav Source to localhost:23457 in kodi to access your files like this : 
+  - Protocole : Serveur WebDAV (HTTP)
+  - Adresse du serveur : localhost
+  - Port : 23457
 
 Aide dans le fil : https://forum.kodi.tv/showthread.php?tid=354249
