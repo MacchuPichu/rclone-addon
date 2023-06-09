@@ -15,6 +15,7 @@ if PY3:
 	#loc = xbmcvfs.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-16-arm")
 	loc = xbmcvfs.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-21-armv7a")
 	locwin = xbmcvfs.translatePath("special://xbmcbin/rclone.exe")
+	locposix = xbmcvfs.translatePath("special://xbmcbin/rclone")
 	loc2 = xbmcvfs.translatePath("special://masterprofile/rclone.conf")
 	pidfile  = xbmcvfs.translatePath("special://temp/librclone.pid")
 	logfile  = xbmcvfs.translatePath("special://temp/librclone.log")
@@ -24,6 +25,7 @@ else:
 	#loc = xbmc.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-16-arm")
 	loc = xbmc.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-21-armv7a")
 	locwin = xbmc.translatePath("special://xbmcbin/rclone.exe")
+	locposix = xbmcvfs.translatePath("special://xbmcbin/rclone")
 	loc2 = xbmc.translatePath("special://masterprofile/rclone.conf")
 	pidfile  = xbmc.translatePath("special://temp/librclone.pid")
 	logfile  = xbmc.translatePath("special://temp/librclone.log")
@@ -32,6 +34,10 @@ else:
 # Si on est sur un Windows
 if os.name == 'nt':
 	loc = locwin
+	
+# Si on est sur un Windows
+if os.name == 'posix':
+	loc = locposix
 
 # Test de la présence du binaire rclone
 if not xbmcvfs.exists(loc):
