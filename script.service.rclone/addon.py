@@ -6,6 +6,8 @@ standard_library.install_aliases()
 
 import os, sys, xbmc, time, stat, xbmcvfs, xbmcaddon, xbmcplugin, xbmcgui, gzip, subprocess, urllib.request
 
+is_android: bool = hasattr(sys, 'getandroidapilevel')
+
 rclone_version = xbmcaddon.Addon().getSetting("rclone-version")
 
 # Définition des variables
@@ -39,13 +41,13 @@ if os.name == 'nt':
 	sourceurl = f'https://downloads.rclone.org/{rclone_version}/rclone-{rclone_version}-windows-amd64.zip'
 	loc = locwin
 # Pour linux
-if os.name == 'posix':
+if os.name == 'posix' and not is_android:
 	sourceurl = f'https://downloads.rclone.org/{rclone_version}/rclone-{rclone_version}-linux-amd64.deb'
 	loc = 'rclone'
 	loc2 = '/home/mint/.config/rclone/rclone.conf'
 	
-# Test de la présence du binaire rclone
-if os.name != 'posix' and not xbmcvfs.exists(loc):
+# Test de la présence du binaire rclone (hors machine linux non android)
+if (os.name != 'posix' or not is_android) and not xbmcvfs.exists(loc):
 	progress_bar = xbmcgui.DialogProgressBG()
 	progress_bar.create('Download', '')
 
