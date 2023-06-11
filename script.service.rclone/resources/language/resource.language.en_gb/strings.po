@@ -19,8 +19,24 @@ msgstr "Settings"
 
 msgctxt "#32011"
 msgid "Command"
-msgstr "Command"
+msgstr "Command (Obsolete)"
 
 msgctxt "#32012"
 msgid "Download"
-msgstr "Download URL"
+msgstr "Download URL (Obsolete)"
+
+msgctxt "#32013"
+msgid "rclone-version"
+msgstr "rclone version"
+
+msgctxt "#32014"
+msgid "remote-name"
+msgstr "Remote name"
+
+msgctxt "#32015"
+msgid "remote-folder"
+msgstr "Remote folder"
+
+msgctxt "#32016"
+msgid "webdav-port"
+msgstr "webdav port"
