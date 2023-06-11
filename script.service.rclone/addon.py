@@ -9,6 +9,8 @@ import os, sys, xbmc, time, stat, xbmcvfs, xbmcaddon, xbmcplugin, xbmcgui, gzip,
 is_android: bool = hasattr(sys, 'getandroidapilevel')
 
 rclone_version = xbmcaddon.Addon().getSetting("rclone-version")
+xbmc.log(msg='RCLONE: Installation sur OS de type : ' + os.name, level=xbmc.LOGINFO)
+xbmc.log(msg='RCLONE: Installation sur Android : ' + is_android, level=xbmc.LOGINFO)
 
 # Définition des variables
 PY3 =  sys.version_info > (3, 0)
