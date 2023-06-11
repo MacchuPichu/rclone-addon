@@ -6,16 +6,15 @@ standard_library.install_aliases()
 
 import os, sys, xbmc, time, stat, xbmcvfs, xbmcaddon, xbmcplugin, xbmcgui, gzip, subprocess, urllib.request
 
-sourceurl = xbmcaddon.Addon().getSetting("rclonedownload")
+rclone_version = xbmcaddon.Addon().getSetting("rclone-version")
 
 # Définition des variables
 PY3 =  sys.version_info > (3, 0)
 if PY3:
 	zippath  = xbmcvfs.translatePath("special://temp/rclone.gz")
 	#loc = xbmcvfs.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-16-arm")
-	loc = xbmcvfs.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-21-armv7a")
+	locandroid = xbmcvfs.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-21-armv7a")
 	locwin = xbmcvfs.translatePath("special://xbmcbin/rclone.exe")
-	locposix = xbmcvfs.translatePath("special://xbmcbin/rclone")
 	loc2 = xbmcvfs.translatePath("special://masterprofile/rclone.conf")
 	pidfile  = xbmcvfs.translatePath("special://temp/librclone.pid")
 	logfile  = xbmcvfs.translatePath("special://temp/librclone.log")
@@ -23,24 +22,30 @@ if PY3:
 else:
 	zippath  = xbmc.translatePath("special://temp/rclone.gz")
 	#loc = xbmc.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-16-arm")
-	loc = xbmc.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-21-armv7a")
+	locandroid = xbmc.translatePath("special://xbmcbin/../../../cache/lib/rclone-android-21-armv7a")
 	locwin = xbmc.translatePath("special://xbmcbin/rclone.exe")
-	locposix = xbmcvfs.translatePath("special://xbmcbin/rclone")
 	loc2 = xbmc.translatePath("special://masterprofile/rclone.conf")
 	pidfile  = xbmc.translatePath("special://temp/librclone.pid")
 	logfile  = xbmc.translatePath("special://temp/librclone.log")
 	cachepath  = xbmc.translatePath("special://temp") 	
 
-# Si on est sur un Windows
+# Définition de la source de l'executable rclone & de la destination de l'executable
+# sourceurl = xbmcaddon.Addon().getSetting("rclonedownload")
+# Par defaut pour Android
+sourceurl = f'https://beta.rclone.org/{rclone_version}/testbuilds/rclone-android-21-armv7a.gz'
+loc = locandroid
+# Pour Windows
 if os.name == 'nt':
+	sourceurl = f'https://downloads.rclone.org/{rclone_version}/rclone-{rclone_version}-windows-amd64.zip'
 	loc = locwin
-	
-# Si on est sur un linux
+# Pour linux
 if os.name == 'posix':
-	loc = locposix
-
+	sourceurl = f'https://downloads.rclone.org/{rclone_version}/rclone-{rclone_version}-linux-amd64.deb'
+	loc = 'rclone'
+	loc2 = '/home/mint/.config/rclone/rclone.conf'
+	
 # Test de la présence du binaire rclone
-if not xbmcvfs.exists(loc):
+if os.name != 'posix' and not xbmcvfs.exists(loc):
 	progress_bar = xbmcgui.DialogProgressBG()
 	progress_bar.create('Download', '')
 
@@ -60,7 +65,11 @@ if not xbmcvfs.exists(loc):
 	st = os.stat(loc)
 	os.chmod(loc, st.st_mode | stat.S_IEXEC)
 
-command = xbmcaddon.Addon().getSetting("parameters")
+#command = xbmcaddon.Addon().getSetting("parameters")
+remote_name = xbmcaddon.Addon().getSetting("remote-name")
+remote_folder = xbmcaddon.Addon().getSetting("remote-folder")
+webdav_port = xbmcaddon.Addon().getSetting("webdav-port")
+command = f'serve webdav {remote_name}:{remote_folder} --addr :{webdav_port} --dir-cache-time 2400h --vfs-cache-max-age 2400h  --poll-interval 10m'
 
 def run(cmd):
 	os.environ['PYTHONUNBUFFERED'] = "1"
