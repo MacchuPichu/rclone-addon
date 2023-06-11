@@ -43,7 +43,7 @@ if os.name == 'nt':
 # Pour linux
 if os.name == 'posix' and not is_android:
 	sourceurl = f'https://downloads.rclone.org/{rclone_version}/rclone-{rclone_version}-linux-amd64.deb'
-	loc = 'rclone'
+	loc = '/bin/rclone'
 	loc2 = '/home/mint/.config/rclone/rclone.conf'
 	
 # Test de la présence du binaire rclone (hors machine linux non android)
