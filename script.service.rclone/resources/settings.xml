@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
     <category label="32001">
-	    <setting label="32013" type="text" id="rclone-version" default="v1.62.2"/>
-	    <setting label="32014" type="text" id="remote-name" default="pCloud_Encrypted"/>
-	    <setting label="32015" type="text" id="remote-folder" default="Médiathèque/"/>
-	    <setting label="32016" type="text" id="webdav-port" default="23457"/>
+	    <setting label="32011" type="text" id="rclone-version" default="v1.62.2"/>
+	    <setting label="32012" type="text" id="remote-name" default="pCloud_Encrypted"/>
+	    <setting label="32013" type="text" id="remote-folder" default="Médiathèque/"/>
+	    <setting label="32014" type="text" id="webdav-port" default="23457"/>
+	    <setting label="32015" type="text" id="webdav-parameters" default="--dir-cache-time 2400h --vfs-cache-max-age 2400h --poll-interval 10m"/>
     </category>
 </settings>
