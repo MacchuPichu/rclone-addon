@@ -20,6 +20,8 @@
 |webdav-port			|"23457"|
 |webdav-parameters	|"--dir-cache-time 2400h --vfs-cache-max-age 2400h --poll-interval 10m"|
 
+* Change remote-name and remote-folder by yours in settings.xml or in the Kodi IHM
+
 #### rclone version pour android
 
 * URL : https://beta.rclone.org/v1.62.2/testbuilds/rclone-android-21-armv7a.gz
