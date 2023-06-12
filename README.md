@@ -1,7 +1,10 @@
 # rclone-addon
 Rclone addon for Kodi 
 
-To be used with Android boxes and phones.
+To be used with 
+- Android boxes/phones
+- linux
+- Windows
 
 1. Place rclone.conf in profile directory : dans ANDROID\DATA\ORG.XBMC.KODI\FILES\.KODI\USERDATA
 2. Zip the folder script.service.rclone et garder le nom le 'script.service.rclone.zip'
