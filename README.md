@@ -11,7 +11,7 @@ To be used with Android boxes and phones.
 
 Parametre du service
 |Parameter name|Valeur par défaut|
-|:-:|:--|
+|:--|:--|
 |rclone-version		|"v1.62.2"|
 |remote-name			|"pCloud_Encrypted"|
 |remote-folder		|"Médiathèque/"|
