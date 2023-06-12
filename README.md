@@ -9,12 +9,18 @@ To be used with Android boxes and phones.
 4. Configure the rclone command to run in the plugin configuration
 5. Redémarrer KODI
 
-Defaut rclone version : https://beta.rclone.org/v1.62.2/testbuilds/rclone-android-21-armv7a.gz
-Mi Box S : arm v7a
+Parametre du service
+|Parameter name|Valeur par défaut|
+|:-:|:-:|
+|rclone-version		|"v1.62.2"/>|
+|remote-name			|"pCloud_Encrypted"/>|
+|remote-folder		|"Médiathèque/"/>|
+|webdav-port			|"23457"/>|
+|webdav-parameters	|"--dir-cache-time 2400h --vfs-cache-max-age 2400h --poll-interval 10m"/>|
 
-Default: serve webdav pCloud_Encrypted:Médiathèque/ --addr :23457 --dir-cache-time 2400h --vfs-cache-max-age 2400h  --poll-interval 10m
 
-Change your_rclone_remote to the rclone remote in your config.
+Defaut rclone version pour android : https://beta.rclone.org/v1.62.2/testbuilds/rclone-android-21-armv7a.gz
+Pour info : Mi Box S = arm v7a
 
 Then you can add a Webdav Source to localhost:23457 in kodi to access your files like this : 
   - Protocole : Serveur WebDAV (HTTP)
