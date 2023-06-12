@@ -15,8 +15,8 @@
 |Parameter name|Valeur par défaut|
 |:--|:--|
 |rclone-version		|"v1.62.2"|
-|remote-name			|"pCloud_Encrypted"|
-|remote-folder		|"Médiathèque/"|
+|remote-name			|remote"|
+|remote-folder		|"folder1/"|
 |webdav-port			|"23457"|
 |webdav-parameters	|"--dir-cache-time 2400h --vfs-cache-max-age 2400h --poll-interval 10m"|
 
