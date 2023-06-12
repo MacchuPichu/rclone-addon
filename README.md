@@ -12,11 +12,11 @@ To be used with Android boxes and phones.
 Parametre du service
 |Parameter name|Valeur par défaut|
 |:-:|:-:|
-|rclone-version		|"v1.62.2"/>|
-|remote-name			|"pCloud_Encrypted"/>|
-|remote-folder		|"Médiathèque/"/>|
-|webdav-port			|"23457"/>|
-|webdav-parameters	|"--dir-cache-time 2400h --vfs-cache-max-age 2400h --poll-interval 10m"/>|
+|rclone-version		|"v1.62.2"|
+|remote-name			|"pCloud_Encrypted"|
+|remote-folder		|"Médiathèque/"|
+|webdav-port			|"23457"|
+|webdav-parameters	|"--dir-cache-time 2400h --vfs-cache-max-age 2400h --poll-interval 10m"|
 
 
 Defaut rclone version pour android : https://beta.rclone.org/v1.62.2/testbuilds/rclone-android-21-armv7a.gz
