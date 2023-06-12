@@ -22,7 +22,7 @@
 
 
 Defaut rclone version pour android : https://beta.rclone.org/v1.62.2/testbuilds/rclone-android-21-armv7a.gz
-Pour info : Mi Box S = arm v7a
+ Pour info : Mi Box S = arm v7a
 
 ### Add a library
 Then you can add a Webdav Source to localhost:23457 in kodi to access your files like this : 
