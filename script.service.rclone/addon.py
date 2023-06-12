@@ -4,7 +4,7 @@ from future import standard_library
 from future.builtins import *
 standard_library.install_aliases()
 
-import os, sys, xbmc, time, stat, xbmcvfs, xbmcaddon, xbmcplugin, xbmcgui, gzip, subprocess, urllib.request
+import os, sys, xbmc, time, stat, xbmcvfs, xbmcaddon, xbmcplugin, xbmcgui, zipfile, gzip, subprocess, urllib.request
 
 # Ajout de LOG pour la verification du type d'OS
 xbmc.log(msg=f'RCLONE: Installation sur OS de type : {os.name}', level=xbmc.LOGINFO)
@@ -39,18 +39,25 @@ rclone_version = xbmcaddon.Addon().getSetting("rclone-version")
 # sourceurl = xbmcaddon.Addon().getSetting("rclonedownload")
 # Par defaut pour Android
 sourceurl = f'https://beta.rclone.org/{rclone_version}/testbuilds/rclone-android-21-armv7a.gz'
+binary_path_in_zip_file = f'rclone-android-21-armv7a'
 loc = locandroid
 # Pour Windows
 if os.name == 'nt':
 	sourceurl = f'https://downloads.rclone.org/{rclone_version}/rclone-{rclone_version}-windows-amd64.zip'
+	binary_path_in_zip_file = f'rclone-{rclone_version}-windows-amd64/rclone.exe'
 	loc = locwin
 # Pour linux
 if os.name == 'posix' and not is_android:
 	sourceurl = f'https://downloads.rclone.org/{rclone_version}/rclone-{rclone_version}-linux-amd64.zip'
+	binary_path_in_zip_file = f'rclone-{rclone_version}-linux-amd64/rclone'
 	loc = locposix
 	
 # Test de la présence du binaire rclone
 if not xbmcvfs.exists(loc):
+	# S'il n'existe pas téléchargement du binaire défini dans la variable `sourceurl`
+	xbmc.log(msg=f'RCLONE: Aucun binaire détecté. téléchargement du fichier : {sourceurl}', level=xbmc.LOGINFO)
+	
+	# Création d'une barre de progression
 	progress_bar = xbmcgui.DialogProgressBG()
 	progress_bar.create('Download', '')
 
@@ -59,16 +66,28 @@ if not xbmcvfs.exists(loc):
 			 percent = (block_number * block_size * 100) / total_size
 			 progress_bar.update(int(percent))
 			 
+	# Téléchargement du fichier défini dans `sourceurl` vers la destination `zippath`
 	urllib.request.urlretrieve(sourceurl, zippath, reporthook)
 	progress_bar.close()
-	input = gzip.GzipFile(zippath, 'rb')
-	s = input.read()
-	input.close()
+	
+	# Lecture du fichier zip ou gz
+	if zipfile.is_zipfile(zippath):
+		zip_file = zipfile.ZipFile(zippath, 'r')
+		s = zip_file.read(binary_path_in_zip_file)
+	else:
+		zip_file = gzip.GzipFile(zippath, 'rb')
+		s = zip_file.read()
+	
+	zip_file.close()
+	
 	output = open(loc, 'wb')
+	xbmc.log(msg=f'RCLONE: Extraction du fichier [{binary_path_in_zip_file}] dans [{loc}]', level=xbmc.LOGINFO)
 	output.write(s)
 	output.close()
 	st = os.stat(loc)
 	os.chmod(loc, st.st_mode | stat.S_IEXEC)
+else:
+	xbmc.log(msg=f'RCLONE: Binaire [{loc}] détecté.', level=xbmc.LOGINFO)
 
 # Construction de la commande webdav rclone à partir des éléments saisie dans les paramètres (au 1ier lancement, lors de l'installation, le script récupere les données par défaut)
 #command = xbmcaddon.Addon().getSetting("parameters")
